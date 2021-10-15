@@ -6,7 +6,7 @@ const port = process.env.PORT || 3000;
 
 
 //app.use(express.static(__dirname + '/app/client'));
-app.use(express.static(__dirname + '/client'));
+app.use(express.static( '/client'));
 
 app.get('/*', function(req,res){
     //const fullPath = path.join(__dirname + '/app/client/index.html');
