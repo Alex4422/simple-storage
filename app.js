@@ -4,11 +4,13 @@ const path = require('path');
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.use(express.static(path.resolve('./app/client/build')));
 
-app.get('*', (req, res) => {
-    res.sendFile(path.resolve('./app/client/build')+'/index.html');
-});
+app.use(express.static(__dirname + '/app/client'));
+
+app.get('/*', function(req,res){
+    const fullPath = path.join(__dirname + '/app/client/index.html');
+    res.sendFile(fullPath);
+})
 
 
 app.listen(port, '0.0.0.0',() => console.log('Application lancé'));
