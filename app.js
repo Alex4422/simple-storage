@@ -5,10 +5,12 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 
-app.use(express.static(__dirname + '/app/client'));
+//app.use(express.static(__dirname + '/app/client'));
+app.use(express.static(__dirname + '/client'));
 
 app.get('/*', function(req,res){
-    const fullPath = path.join(__dirname + '/app/client/index.html');
+    //const fullPath = path.join(__dirname + '/app/client/index.html');
+    const fullPath = path.join(__dirname + '/client/index.html');
     res.sendFile(fullPath);
 })
 
