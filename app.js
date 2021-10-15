@@ -10,7 +10,7 @@ app.use(express.static(__dirname + '/client'));
 
 app.get('/*', function(req,res){
     //const fullPath = path.join(__dirname + '/app/client/index.html');
-    const fullPath = path.join(__dirname + '/client/index.html');
+    const fullPath = path.join('/client/index.html');
     res.sendFile(fullPath);
 })
 
