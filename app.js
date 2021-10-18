@@ -13,7 +13,9 @@ app.use(express.static(__dirname + '/build'));
 app.get('/*', function(req,res){
     //const fullPath = path.join(__dirname + '/app/client/index.html');
 
-    const fullPath = path.join(__dirname + 'build','index.html');
+    //const fullPath = path.join(__dirname + 'build','index.html');
+
+    const fullPath = path.join(__dirname + '/build','index.html');
     res.sendFile(fullPath);
 })
 
