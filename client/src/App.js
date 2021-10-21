@@ -38,23 +38,15 @@ class App extends Component {
   runExample = async () => {
     const { accounts, contract } = this.state;
 
+    // Stores a given value, 5 by default.
+    await contract.methods.set(5).send({ from: accounts[0] });
+
     // Get the value from the contract to prove it worked.
     const response = await contract.methods.get().call();
 
     // Update state with the result.
     this.setState({ storageValue: response });
   };
-
-  set = async() => {
-    const { accounts, contract } = this.state;
-    const storage = this.storage.value;
-    
-    // Interaction avec le smart contract pour ajouter un compte 
-    await contract.methods.set(storage).send({from: accounts[0]});
-    // Récupérer la liste des comptes autorisés
-    this.runExample();
-    this.storage.value = 0;
-  }
 
   render() {
     if (!this.state.web3) {
@@ -70,20 +62,9 @@ class App extends Component {
           a stored value of 5 (by default).
         </p>
         <p>
-          Try changing the value stored on <strong>line 40</strong> of App.js.
+          Try changing the value stored on <strong>line 42</strong> of App.js.
         </p>
         <div>The stored value is: {this.state.storageValue}</div>
-        <div>Set a new stored value: 
-              <div className="form-group mr-sm-2">
-                <input
-                  id="storage"
-                  type="number"
-                  ref={(input) => { this.storage = input }}
-                  className="form-control"
-                required />
-              </div>  
-              <button onClick = { this.set } className="btn btn-primary">Set</button>
-        </div>
       </div>
     );
   }
